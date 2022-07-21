@@ -2,6 +2,7 @@
     <div style="width:100vw; height:50px; background-color:#ededed;">
         <button @click="$router.push('/')">Main</button>
         <button @click="$router.push('/about')">About page</button>
+
         <template v-if="!userStore.$state.isLogin">
             <button @click="$router.push('/login')">Go to login page</button>
             <button @click="$router.push('/sign-up')">Sign up</button>

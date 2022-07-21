@@ -1,6 +1,10 @@
 <template>
   <div class="content" style="width:100vw;">
-    about page </div>
+    about page
+    <button @click="openModal">
+      Open Modal
+    </button>
+  </div>
 </template>
 <script setup lang="ts">
 const title = ref('My App | about page')
@@ -17,6 +21,11 @@ useHead({
 })
 
 
+function openModal() {
+  const { openModal } = useModal();
+  openModal()
+
+}
 
 
 
