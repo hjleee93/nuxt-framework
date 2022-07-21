@@ -8,7 +8,7 @@
 
     <li v-if="user.profile_img">
       <img :src="user.profile_img" :alt="`${user.nickname}'s profile image'`" />
-      <slot name="editProfile"></slot>
+
     </li>
   </ul>
 

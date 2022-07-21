@@ -1,6 +1,6 @@
 <template>
   <div>
-    Some *custom* layout
+    <p>Some *custom* layout</p>
     <slot />
   </div>
 </template>

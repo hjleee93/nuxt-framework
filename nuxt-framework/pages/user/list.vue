@@ -1,17 +1,25 @@
 <template>
   <div class="content" style="width:100vw;">
     <h1>User table page</h1>
-
     <table style="background-color: #e9e9e9; width:100vw;">
       <tbody>
-        <tr v-for="user in userList">
-          <td style="border-bottom: 1px solid #000;">
-            <UserInfo :user="user"> </UserInfo>
-          </td>
-        </tr>
+        <template v-if="!isPending">
+          <tr v-for="user in userList">
+            <td style="border-bottom: 1px solid #000;">
+              <UserInfo :user="user"> </UserInfo>
+            </td>
+          </tr>
+        </template>
+        <template v-else>
+          <tr v-for="sk in 2">
+
+            <td style="border-bottom:1px solid #000">
+              <UserInfoSk />
+            </td>
+          </tr>
+        </template>
       </tbody>
     </table>
-
     <div class="pagination">
       <span @click="prevPage">&laquo;</span>
       <span @click="paging(i)" v-for="i in pageNum" :key="i" :class="i === currPage ? 'active' : ''">{{ i }}</span>
@@ -21,24 +29,27 @@
 </template>
 
 <script setup lang="ts">
-import UserInfo from '~/components/_userInfo.vue'
-
 const userList = ref([])
 
 //pagination
 const currPage = ref(1);
-const totalCnt = ref(0);
+const totalCnt = ref(1);
 const limit = 2;
 const pageNum = ref(computed(() => Math.ceil(totalCnt.value / limit)))
 const offset = ref(computed(() => (currPage.value - 1) * limit))
+const isPending = ref(false);
 
 async function fetch() {
+  const delay = (ms: number) => new Promise((_) => setTimeout(_, ms))
 
   const payload = {
     limit: limit,
   }
-  const res = await useFetchData('get', '/user/list', payload)
+  isPending.value = true
+  await delay(3000)
 
+  const res = await useFetchData('get', '/user/list', payload)
+  isPending.value = false
   const { data } = res;
   userList.value = data.list.slice(offset.value, limit + offset.value);
 

@@ -5,10 +5,11 @@
       <h4>Login component</h4>
       <Login />
     </div>
+
     <template v-else>
       <UserInfo v-if="userStore.$state.user" :user="userStore.$state.user"></UserInfo>
     </template>
-    <div>
+    <div style="margin-top:100px">
       <ul>
         <li>
           <NuxtLink to="/sample">sample page - no auth</NuxtLink>
@@ -20,7 +21,7 @@
           <NuxtLink to="/user/2">query param page - user/2</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/user-list">user table Page</NuxtLink>
+          <NuxtLink to="/user/list">user table Page - simple skeleton ui</NuxtLink>
         </li>
       </ul>
     </div>
@@ -28,13 +29,14 @@
 </template>
 
 <script setup lang="ts">
-import Login from '~/components/_login.vue'
 import { useUserStore } from '~/stores/user'
-import UserInfo from '~/components/_userInfo.vue'
+
 
 const title = ref('My App')
 const description = ref('My App Description')
 const userStore = useUserStore()
+
+const config = useRuntimeConfig();
 
 useHead({
   title: title.value,
@@ -45,7 +47,7 @@ useHead({
 })
 
 onMounted(() => {
-
+  console.log(config.public.API_BASE_URL)
 })
 </script>
 <style lang="scss">

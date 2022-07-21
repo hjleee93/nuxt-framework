@@ -3,9 +3,6 @@
     about page </div>
 </template>
 <script setup lang="ts">
-
-
-
 const title = ref('My App | about page')
 const description = ref('about page')
 
