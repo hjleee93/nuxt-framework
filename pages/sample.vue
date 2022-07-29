@@ -15,9 +15,6 @@
     </div>
 </template>
 <script setup lang="ts">
-
-
-
 const title = ref('My App | Guest page')
 const description = ref('sample page')
 

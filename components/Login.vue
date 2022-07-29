@@ -32,7 +32,7 @@ async function onSubmit() {
       const { setUser } = useUser();
       setUser(data)
 
-      $router.push('/userInfo')
+      $router.push('/user-info')
 
     }
   } catch (err: any) {

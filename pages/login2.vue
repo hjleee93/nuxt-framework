@@ -3,9 +3,8 @@
   <Login />
 </template>
 <script setup lang="ts">
-    import Login from '~~/components/_login.vue';
-    definePageMeta({
-      layout: 'custom',
-      middleware: ["auth"]
-    });
-    </script>
+definePageMeta({
+  layout: 'custom',
+  middleware: ["auth"]
+});
+</script>

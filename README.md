@@ -1,42 +1,18 @@
-# Nuxt 3 Minimal Starter
+## Nuxt 3 - rc 6.0 기준 framework 정리
+<br/>
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+### Nuxt naming convention 정리
 
-## Setup
+<br/>
 
-Make sure to install the dependencies:
+1. use kebab-case for everything in the pages folder
+2. use kebab-case for folders under the components folder
+but use PascalCase for all component names
 
-```bash
-# yarn
-yarn install
+3. components는 대문자로 시작
+4. pages 소문자로 시작
 
-# npm
-npm install
 
-# pnpm
-pnpm install --shamefully-hoist
-```
 
-## Development Server
 
-Start the development server on http://localhost:3000
 
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.

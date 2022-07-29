@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { useUserStore } from '~/stores/user'
-import UserInfo from '~/components/_userInfo.vue'
+
 
 definePageMeta({
   requiresAuth: true,
