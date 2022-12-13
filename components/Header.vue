@@ -14,28 +14,17 @@
 <script setup lang="ts">
 
 import { useUserStore } from '~/stores/user'
-import { IUser } from '~~/types';
+import shared from '~~/scripts/shared';
 
 const userStore = useUserStore()
 const $router = useRouter();
 
 
 async function logout() {
+    shared.logout()
+    await shared.deleteCookie()
 
     $router.push('/')
-    userStore.$state.user = {} as IUser;
-    userStore.$state.isLogin = false;
-
-    const { initUser } = useUser()
-    initUser();
-
-    await $fetch('/api/cookie', {
-        method:'delete'        
-      })
-
-
-    sessionStorage.removeItem('access_token')
-
 }
 
 </script>

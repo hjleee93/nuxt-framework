@@ -8,13 +8,12 @@ export const useUserStore = defineStore({
   state: () => {
     return {
       user: {} as IUser,
-      isLogin: false,
+      isLogin: false
       
     }
   },
   actions: {
-    async setUserInfo() {    
-     
+    async setUserInfo() {         
       try {      
          const {data, pending, refresh, error} = await useFetchData('get', 'https://randomuser.me/api')
          const [info] = data.value.results;
@@ -27,13 +26,17 @@ export const useUserStore = defineStore({
           profile_img:info.picture.thumbnail
          }  
          
-        // sessionStorage.setItem('access_token',info.login.uuid )        
         this.$state.user = userInfo;
+        this.$state.isLogin = true
 
       } catch (err: any) {
         console.error(err)
       }
 
+    },
+    resetUserInfo(){
+      this.$state.user = {} as IUser
+      this.$state.isLogin = false
     }
 
   },

@@ -18,13 +18,11 @@ async function onSubmit() {
     email: email.value,
     password: password.value
   }
-
   try {
     const result = await useFetchData('post', '/auth/login', payload, false)
     if (result) {
 
       //pinia
-      userStore.$state.isLogin = true;
       await userStore.setUserInfo()
 
       //useState
