@@ -1,13 +1,12 @@
 export default defineNuxtRouteMiddleware((to, from) => {
    
-  const access_token = typeof window.sessionStorage ? sessionStorage.getItem('access_token') : null
+  const cookie = useCookie('token')
+
+  console.log('cookie', cookie.value)
    
-  if (to.meta.requiresAuth && !access_token) {
+
+  if (to.meta.requiresAuth && !cookie.value) {
+      alert('need login')
       return navigateTo('/login') 
     }
-
-  // if (to.params.id === '1') {
-  //   return abortNavigation()
-  // }
-  // 
 })

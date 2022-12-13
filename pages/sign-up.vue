@@ -29,8 +29,15 @@ async function onSubmit() {
 
   try {
     const result = await useFetchData('post', '/sign-up', payload)
+    
     const { data } = result
 
+    await $fetch('/api/cookie', {
+        method:'post',
+        body:{
+          token:data.uid
+        }
+      })
     // pinia
     userStore.$state.user = data;
     userStore.$state.isLogin = true;

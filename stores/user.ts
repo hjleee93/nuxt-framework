@@ -1,17 +1,20 @@
 
 import { defineStore } from 'pinia'
+import { IUser } from '~~/types';
 
 export const useUserStore = defineStore({
+
   id: 'user-store',
   state: () => {
     return {
-      user: null,
+      user: {} as IUser,
       isLogin: false,
       
     }
   },
   actions: {
-    async setUserInfo() {      
+    async setUserInfo() {    
+     
       try {      
          const {data, pending, refresh, error} = await useFetchData('get', 'https://randomuser.me/api')
          const [info] = data.value.results;
@@ -22,9 +25,9 @@ export const useUserStore = defineStore({
           point:100,
           uid:info.login.uuid,
           profile_img:info.picture.thumbnail
-         }         
+         }  
          
-        sessionStorage.setItem('access_token',info.login.uuid )        
+        // sessionStorage.setItem('access_token',info.login.uuid )        
         this.$state.user = userInfo;
 
       } catch (err: any) {

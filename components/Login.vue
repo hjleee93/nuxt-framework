@@ -29,6 +29,14 @@ async function onSubmit() {
 
       //useState
       const { data } = await useFetchData('get', '/user')
+
+      //임시 쿠키 저장
+      await $fetch('/api/cookie', {
+        method:'post',
+        body:{
+          token:data.uid
+        }
+      })
       const { setUser } = useUser();
       setUser(data)
 

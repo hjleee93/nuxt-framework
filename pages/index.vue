@@ -19,7 +19,7 @@
           <NuxtLink to="/sample">sample page - no auth</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/userInfo">user info page - yes auth</NuxtLink>
+          <NuxtLink to="/user-info">user info page - yes auth</NuxtLink>
         </li>
         <li>
           <NuxtLink to="/user/2">query param page - user/2</NuxtLink>
@@ -54,7 +54,7 @@ useHead({
 })
 
 onMounted(() => {
-  console.log(config.public.API_BASE_URL)
+  // console.log(config.public.API_BASE_URL)
 })
 
 function openModal() {
